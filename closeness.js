@@ -18,13 +18,13 @@ var closeness = function(A,B) {
 
     //construct first i array - closenessMatrix[i][0] = i
     for(var i = 1; i <= A.length; i++) {
-        closenessMatrix[i] = emptyJArray;
+        closenessMatrix[i] = emptyJArray.slice(); //create new array copy
         closenessMatrix[i][0] = i;
     }
 
     for(var j = 1; j <= B.length; j++) {
         for(var i = 1; i <= A.length; i++) {
-            if(B[j] == A[i])
+            if(B[j-1] == A[i-1])
                 closenessMatrix[i][j] = closenessMatrix[i-1][j-1];
             else
                 closenessMatrix[i][j] = Math.min(   closenessMatrix[i-1][j] + 1, //deletion
