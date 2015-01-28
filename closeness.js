@@ -6,7 +6,7 @@ var closeness = function(A,B) {
     var closenessMatrix = [[]];
 
     //construct first j array - closenessMatrix[0][j] = j by default (as distance between first j characters and empty string is j).
-    var jArray = [];
+    var jArray = [0];
     var emptyJArray = [];
 
     for(var j = 1; j <= B.length; j++) {
@@ -24,8 +24,7 @@ var closeness = function(A,B) {
 
     for(var j = 1; j <= B.length; j++) {
         for(var i = 1; i <= A.length; i++) {
-            console.log("B " + B[j-1] + " A " + A[i-1])
-            if(B[j-1] == A[i-1])
+            if(B[j] == A[i])
                 closenessMatrix[i][j] = closenessMatrix[i-1][j-1];
             else
                 closenessMatrix[i][j] = Math.min(   closenessMatrix[i-1][j] + 1, //deletion
@@ -34,7 +33,7 @@ var closeness = function(A,B) {
         }
     }
 
-    return closenessMatrix[A.length, B.length];
+    return closenessMatrix[A.length][B.length];
 }
 
 console.log(closeness("kitten", "sitting"));
