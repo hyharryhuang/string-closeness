@@ -35,5 +35,3 @@ var closeness = function(A,B) {
 
     return closenessMatrix[A.length][B.length];
 }
-
-console.log(closeness("kitten", "sitting"));
